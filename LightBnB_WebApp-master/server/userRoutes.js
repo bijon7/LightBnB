@@ -26,10 +26,14 @@ module.exports = function (router, database) {
   const login = function (email, password) {
     return database.getUserWithEmail(email)
       .then((user) => {
-        // console.log("login function ", user);
+        console.log("login function ", user);
+        console.log("login function ", password);
+        console.log("login function ", user.password);
         if (bcrypt.compareSync(password, user.password)) {
-          // console.log("login function ",)
+          console.log("login successful ",)
           return user;
+        } else {
+          console.log("failed");
         }
         return null;
       });
@@ -40,6 +44,7 @@ module.exports = function (router, database) {
     const { email, password } = req.body;
     login(email, password)
       .then(user => {
+        console.log("api user", user)
         if (!user) {
           res.send({ error: "error" });
           return;
