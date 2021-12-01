@@ -30,7 +30,7 @@ module.exports = function (router, database) {
         console.log("login function ", password);
         console.log("login function ", user.password);
         if (bcrypt.compareSync(password, user.password)) {
-          console.log("login successful ",)
+          //console.log("login successful ",)
           return user;
         } else {
           console.log("failed");
